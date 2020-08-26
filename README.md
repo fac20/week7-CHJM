@@ -40,6 +40,8 @@ Rihards - practice express, learn testing and CI
 - SWOT of the team
 - Frequent pair swap
 - Practice insomnia
+- Stretch and reset on time
+- Efficient sprints
 - Create RESTapi
 
 ### Resources
