@@ -19,4 +19,4 @@ function getUser(email) {
 		.catch(error => error);
 }
 
-module.exports = { createUser };
+module.exports = { createUser, getUser };
