@@ -4,5 +4,7 @@
 ## Personal Goals
 
 Josh -
+
 Trish -
-Jennifer -
+
+Jennifer - Set up Github Actions!
