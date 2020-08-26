@@ -40,3 +40,10 @@ Rihards - practice express, learn testing and CI
 -
 -
 - 
+
+### Resources
+
+https://github.com/oliverjam/learn-express-middleware
+https://github.com/oliverjam/learn-rest-apis
+https://github.com/expressjs/cors
+https://github.com/oliverjam/learn-password-security
