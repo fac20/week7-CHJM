@@ -41,7 +41,7 @@ Rihards - practice express, learn testing and CI
 - Frequent pair swap
 - Practice insomnia
 - Stretch and reset on time
-- Efficient sprints
+- Efficient sprints (20:20:20)
 - Create RESTapi
 
 ### Blueprints
