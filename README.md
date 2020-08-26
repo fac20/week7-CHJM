@@ -12,7 +12,7 @@ Rihards - Scrum
 
 Josh - I would like to get to grips with authentication and usage of tokens using JWT.
 Trish -
-Jennifer -
+Jennifer - Set up Github Actions with Deployment!
 
 
 ## Team Goals
