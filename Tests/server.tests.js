@@ -28,4 +28,3 @@ test('server tests are initialised and working', t => {
 //         "setupdb": "node db/build.js",
 //         "format": "prettier --write '**/*.{js,css,md}'"
 //     },
-//     },
