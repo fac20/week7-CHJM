@@ -31,7 +31,7 @@ Rihards - practice express, learn testing and CI
 
 ### Wednesday
 
-- By the end of the day to setup a server in express and database.
+- By the end of the day to setup a server and a database.
 
 
 ### Thursday
@@ -39,3 +39,4 @@ Rihards - practice express, learn testing and CI
 -
 -
 -
+- 
