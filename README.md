@@ -36,10 +36,11 @@ Rihards - practice express, learn testing and CI
 
 ### Thursday
 
--
--
--
-- 
+- Morning checkin (concerns)
+- SWOT of the team
+- Frequent pair swap
+- Practice insomnia
+- Create RESTapi
 
 ### Resources
 
