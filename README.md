@@ -21,14 +21,17 @@ Jennifer - Set up Github Actions with Deployment!
 
 Rihards - practice express, learn testing and CI
 
+## Pairs
+
+#### Wednesday 
+
+{Josh : Rihards}, {Trish : Jennifer}
+
 ## Team Goals
 
 ### Wednesday
 
--
--
--
--
+- By the end of the day to setup a server in express and database.
 
 
 ### Thursday
