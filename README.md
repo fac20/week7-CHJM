@@ -10,7 +10,7 @@ Rihards - Scrum
 
 ## Personal Goals
 
-Josh -
+Josh - I would like to get to grips with authentication and usage of tokens using JWT.
 Trish -
 Jennifer -
 
