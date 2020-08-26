@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 //bring in handlers with format const nameOfHandlers = require('./middleware/file')
 
