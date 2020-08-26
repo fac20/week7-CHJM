@@ -44,6 +44,14 @@ Rihards - practice express, learn testing and CI
 - Efficient sprints
 - Create RESTapi
 
+### Blueprints
+
+[file structure](https://miro.com/app/board/o9J_kmtEa-w=/)
+
+[loco 8's ](https://miro.com/app/board/o9J_kmuWsLA=/)
+
+[schema](https://dbdiagram.io/d/5f465d9e7b2e2f40e9ded631)
+
 ### Resources
 
 https://github.com/oliverjam/learn-express-middleware
