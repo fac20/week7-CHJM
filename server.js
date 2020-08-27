@@ -17,9 +17,10 @@ server.use(express.json());
 server.use(handleErrors);
 
 //route to create a user
-server.post('/signin', users.signin);
+server.post('/signup', users.signup);
 
 // route to login
+server.post('/login', users.login);
 // server.post('/login', users.login);
 
 server.get('/harvest', harvestHandler.getAllHarvest);
