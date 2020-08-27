@@ -35,6 +35,26 @@ function createHarvest(req, res, next) {
 		.catch(next);
 }
 
+function deleteHarvest(req, res, next) {
+	const harvest = req.params.id;
+	harvestModel
+		.deleteHarvest(harvest)
+		.then(() => {
+			res.status(204).send();
+		})
+		.catch(next);
+}
+
+// //jack's team
+// function deleteTeam(req, res, next) {
+// 	const team_name = req.params.team;
+// 	modelTeams
+// 		.deleteTeam(team_name)
+// 		.then(() => {
+// 			res.status(204).send();
+// 		})
+// 		.catch(next);
+// }
 // harvest.food_type,
 // harvest.taste,
 // harvest.harvest_time,
@@ -50,6 +70,5 @@ module.exports = {
 	createHarvest,
 	getAllHarvest,
 	getHarvest,
-	// editHarvest,
-	// deleteHarvest
+	deleteHarvest,
 };
