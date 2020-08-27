@@ -41,7 +41,6 @@ test('can add a user to the users table in database', t => {
 				.createUser(testUser)
 
 				.then(returnedUser => {
-					console.log('HOHO' + returnedUser);
 					t.equal(
 						returnedUser.username,
 						'Test123',

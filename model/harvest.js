@@ -30,8 +30,13 @@ function getAllHarvest() {
 		.catch(console.error);
 }
 
+function deleteHarvest(id) {
+	return db.query('');
+}
+
 module.exports = {
 	createHarvest,
 	getHarvest,
 	getAllHarvest,
+	deleteHarvest,
 };
