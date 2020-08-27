@@ -1,4 +1,4 @@
-const test = require('./node_modules/tape');
+const test = require('tape');
 const build = require('../database/build');
 const db = require('../database/connection');
 const users = require('../model/users');
