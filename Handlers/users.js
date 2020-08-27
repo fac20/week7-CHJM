@@ -1,4 +1,3 @@
-//function login(req, res, next) {}
 const users = require('../model/users');
 const harvest = require('../model/harvest');
 const jwt = require('jsonwebtoken');
