@@ -3,28 +3,26 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 function createUser(user) {
-	bcrypt
+	console.log(user);
+	return bcrypt
 		.genSalt(10)
 		.then(salt => bcrypt.hash(user.password, salt))
 		.then(hash => {
 			user.password = hash;
-			return db
-				.query(
-					'INSERT INTO users (username, email, password) VALUES ($1, $2, $3)',
-					[user.username, user.email, user.password]
-				)
-				.then(() => {
-					return getUser('user.username);
-				})
-				.catch(error => error);
-		});
+			return db.query(
+				'INSERT INTO users(username, email, password) VALUES($1, $2, $3) RETURNING *',
+				[user.username, user.email, user.password]
+			);
+		})
+		.then(result => result.rows[0])
+		.catch(error => error);
 }
 
 function getUser(username) {
 	return db
 		.query('SELECT * FROM users WHERE username = ($1)', [username])
 		.then(user => {
-			console.log(user.rows[0]);
+			//console.log(user.rows[0]);
 			return user.rows[0];
 		})
 		.catch(error => error);

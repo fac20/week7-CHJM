@@ -12,7 +12,6 @@ test('can retrieve a user with a given email address', t => {
 			return users.getUser(username);
 		})
 		.then(user => {
-			console.log(user);
 			const email = user.email;
 			t.equal(
 				email,
@@ -38,15 +37,18 @@ test('can add a user to the users table in database', t => {
 	};
 	build()
 		.then(() => {
-			users.createUser(testUser).then(returnedUser => {
-				console.log('HOHO' + returnedUser);
-				t.equal(
-					returnedUser.username,
-					'Test123',
-					`Test user is in database with name ${returnedUser.username}`
-				);
-				t.end();
-			});
+			users
+				.createUser(testUser)
+
+				.then(returnedUser => {
+					console.log('HOHO' + returnedUser);
+					t.equal(
+						returnedUser.username,
+						'Test123',
+						`Test user is in database with name ${returnedUser.username}`
+					);
+					t.end();
+				});
 		})
 		.catch(err => {
 			t.error(err);
@@ -55,7 +57,7 @@ test('can add a user to the users table in database', t => {
 });
 
 // otherwise tests will pause for 10s in the terminal
-test('Close DB pool (not a real test)', t => {
-	db.end();
-	t.end();
-});
+// test('Close DB pool (not a real test)', t => {
+// 	db.end();
+// 	t.end();
+// });
