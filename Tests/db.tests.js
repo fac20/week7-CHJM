@@ -2,6 +2,7 @@ const test = require('tape');
 const build = require('../database/build');
 const db = require('../database/connection');
 const users = require('../model/users');
+const { getMaxListeners } = require('../database/connection');
 
 // test that getUser works
 
@@ -24,6 +25,33 @@ test('can retrieve a user with a given email address', t => {
 });
 
 // test that createUser
+test('can add a user to the users table in database', t => {
+	build()
+		.then(() => {
+			//add all the fields to create a new user
+			//return the correct model function with these fields
+			const testUser = {
+				email: 'testUser@hotmail.com',
+				username: 'Test123',
+				password: 'qwerty',
+			};
+			users.createUser(testUser);
+		})
+		.then(() => {
+			users.getUser(testUser.email).then(returnedUser => {
+				t.equal(
+					returnedUser.email,
+					'testUser@hotmail.com',
+					`Test user is in database with email ${returnedUser.email}`
+				);
+				t.end();
+			});
+		})
+		.catch(err => {
+			t.error(err);
+			t.end();
+		});
+});
 
 // test that getHarvest
 
