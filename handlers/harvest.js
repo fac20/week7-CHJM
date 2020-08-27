@@ -15,18 +15,20 @@ function getHarvest(req, res, next) {
 		.getHarvest(type)
 		.then(result => {
 			!result
-				? res.status(204).send('No such a harvest. Change harvest type')
-				: res.status(200).send(result);
+				?
+				res.status(204).send('No such a harvest. Change harvest type') :
+				res.status(200).send(result);
 		})
 		.catch(next);
 }
 
 function createHarvest(req, res, next) {
-	const user = req.user;
+	const id = req.user.id;
 	const harvestData = req.body;
+	console.log("user id createHarvest Handler:", id);
 	console.log(harvestData);
 	harvestModel
-		.createHarvest(user, harvestData)
+		.createHarvest(harvestData, id)
 		.then(() => {
 			res.status(201).send({
 				message: 'harvest created',

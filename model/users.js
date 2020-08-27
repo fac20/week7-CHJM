@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 function createUser(user) {
-	console.log(user);
 	return bcrypt
 		.genSalt(10)
 		.then(salt => bcrypt.hash(user.password, salt))
@@ -22,7 +21,6 @@ function getUser(username) {
 	return db
 		.query('SELECT * FROM users WHERE username = ($1)', [username])
 		.then(user => {
-			//console.log(user.rows[0]);
 			return user.rows[0];
 		})
 		.catch(error => error);
@@ -31,7 +29,10 @@ function getUser(username) {
 function getUserByID(id) {
 	return db
 		.query('SELECT * FROM users WHERE id = ($1)', [id])
-		.then(user => user.rows[0])
+		.then(user => {
+			console.log("user rows", user.rows[0]);
+			return user.rows[0]
+		})
 		.catch(error => error);
 }
 
@@ -48,4 +49,9 @@ function updatePassword(currentPassword, newPassword) {
 		.catch(error => error);
 }
 
-module.exports = { createUser, getUser, updatePassword, getUserByID };
+module.exports = {
+	createUser,
+	getUser,
+	updatePassword,
+	getUserByID
+};

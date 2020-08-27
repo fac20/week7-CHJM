@@ -1,18 +1,19 @@
 const db = require('../database/connection');
 
-function createHarvest(harvest) {
+function createHarvest(harvest, user) {
 	return db
 		.query(
-			'INSERT INTO harvest(food_type, taste, harvest_time, location, date, user_id) VALUES ($1, $2, $3, $4, $5, $6)',
+			'INSERT INTO harvest(food_type, taste, harvest_time, location, date, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
 			[
 				harvest.food_type,
 				harvest.taste,
 				harvest.harvest_time,
 				harvest.location,
 				harvest.date,
-				harvest.user_id,
+				user
 			]
 		)
+		.then(result => result.rows[0])
 		.catch(error => error);
 }
 

@@ -10,7 +10,7 @@ function signup(req, res, next) {
 		.createUser(userData)
 		.then(user => {
 			const token = jwt.sign({
-				user: user.id
+				id: user.id
 			}, SECRET, {
 				expiresIn: '1h',
 			});
