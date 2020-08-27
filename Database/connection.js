@@ -1,10 +1,11 @@
-const pg = require('./node_modules/pg');
-const dotenv = require('./node_modules/dotenv');
+const pg = require('pg');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
 const options = {
 	connectionString: process.env.DATABASE_URL,
+	ssl: { rejectUnauthorized: false },
 };
 
 if (process.env.NODE_ENV === 'test') {
