@@ -24,8 +24,9 @@ server.post('/login', users.login);
 // server.post('/login', users.login);
 
 server.get('/harvest', harvestHandler.getAllHarvest);
+server.get('/harvest/:type', harvestHandler.getHarvest);
 server.post('/harvest', authentification, harvestHandler.createHarvest);
-// server.put("harvest", authentification, harvestHandler.adjustHarvest);
-// server.delete("harvest", authentification, harvestHandler.deleteHarvest);
+server.delete('/harvest/:id', authentification, harvestHandler.deleteHarvest);
+// server.put('/harvest/:id', authentification, harvestHandler.adjustHarvest);
 
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
