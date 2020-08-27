@@ -31,7 +31,9 @@ function getAllHarvest() {
 }
 
 function deleteHarvest(id) {
-	return db.query('');
+	return db
+		.query('DELETE FROM harvest WHERE id=($1), [id]')
+		.catch(err => err);
 }
 
 function adjustHarvest(id, property, newValue) {
