@@ -14,7 +14,7 @@ function createUser(user) {
 					[user.username, user.email, user.password]
 				)
 				.then(() => {
-					return getUser(user.email);
+					return getUser('user.username);
 				})
 				.catch(error => error);
 		});
@@ -23,7 +23,10 @@ function createUser(user) {
 function getUser(username) {
 	return db
 		.query('SELECT * FROM users WHERE username = ($1)', [username])
-		.then(user => user.rows[0])
+		.then(user => {
+			console.log(user.rows[0]);
+			return user.rows[0];
+		})
 		.catch(error => error);
 }
 

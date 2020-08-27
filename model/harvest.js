@@ -19,10 +19,9 @@ function createHarvest(harvest) {
 function getHarvest(type) {
 	return db
 		.query('SELECT * FROM harvest WHERE food_type = ($1)', [type])
-		.then(result => result.rows[0])
+		.then(result => result.rows)
 		.catch(console.error);
 }
-
 
 function getAllHarvest() {
 	return db
@@ -34,5 +33,5 @@ function getAllHarvest() {
 module.exports = {
 	createHarvest,
 	getHarvest,
-	getAllHarvest
+	getAllHarvest,
 };

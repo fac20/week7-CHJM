@@ -38,10 +38,8 @@ test('can add a user to the users table in database', t => {
 	};
 	build()
 		.then(() => {
-			users.createUser(testUser);
-		})
-		.then(() => {
-			users.getUser(testUser.username).then(returnedUser => {
+			users.createUser(testUser).then(returnedUser => {
+				console.log('HOHO' + returnedUser);
 				t.equal(
 					returnedUser.username,
 					'Test123',
@@ -55,10 +53,6 @@ test('can add a user to the users table in database', t => {
 			t.end();
 		});
 });
-
-// test that getHarvest
-
-// test thta createHarvest
 
 // otherwise tests will pause for 10s in the terminal
 test('Close DB pool (not a real test)', t => {
