@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 function createUser(user) {
 	bcrypt
-		.gensalt(10)
+		.genSalt(10)
 		.then(salt => bcrypt.hash(user.password, salt))
 		.then(hash => {
 			user.password = hash;
