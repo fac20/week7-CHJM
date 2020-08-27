@@ -15,9 +15,8 @@ function getHarvest(req, res, next) {
 		.getHarvest(type)
 		.then(result => {
 			!result
-				?
-				res.status(204).send('No such a harvest. Change harvest type') :
-				res.status(200).send(result);
+				? res.status(204).send('No such a harvest. Change harvest type')
+				: res.status(200).send(result);
 		})
 		.catch(next);
 }
@@ -36,12 +35,19 @@ function createHarvest(req, res, next) {
 		.catch(next);
 }
 
+function deleteHarvest(req, res, next) {
+	const harvest = req.params.id;
+	harvestModel.deleteHarvest(harvest).then(() => {
+		res.status(204).send();
+	});
+}
+
 function adjustHarvest(req, res, next) {
-	console.log(req.params)
+	console.log(req.params);
 	const id = req.params.id;
 	const property = req.params.property;
 	const newValue = req.body;
-	console.log(req.body)
+	console.log(req.body);
 	harvestModel
 		.adjustHarvest(id, property, newValue)
 		.then(adjustedHarvest => {
@@ -64,15 +70,10 @@ function adjustHarvest(req, res, next) {
 // harvest.date,
 // harvest.user_id,
 
-// editHarvest
-
-// deleteHarvest
-
 module.exports = {
 	createHarvest,
 	getAllHarvest,
 	getHarvest,
-	adjustHarvest
-	// editHarvest,
-	// deleteHarvest
+	deleteHarvest,
+	adjustHarvest,
 };

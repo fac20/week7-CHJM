@@ -55,8 +55,8 @@ test('can add a user to the users table in database', t => {
 		});
 });
 
-// otherwise tests will pause for 10s in the terminal
-// test('Close DB pool (not a real test)', t => {
-// 	db.end();
-// 	t.end();
-// });
+//otherwise tests will pause for 10s in the terminal
+test('Close DB pool', t => {
+	db.end();
+	t.end();
+});
