@@ -14,7 +14,11 @@ test('can retrieve a user with a given email address', t => {
 		.then(user => {
 			console.log(user);
 			const email = user.email;
-			t.equal(email, 'jhart5', `username ${email} should equal jhart5`);
+			t.equal(
+				email,
+				'potatojosh@askjeeves.com',
+				`email ${email} should equal potatojosh@askjeeves.com`
+			);
 			t.end();
 		})
 		.catch(err => {
