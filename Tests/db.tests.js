@@ -30,19 +30,19 @@ test('can retrieve a user with a given email address', t => {
 
 // test that createUser
 test('can add a user to the users table in database', t => {
+	//add all the fields to create a new user
+	//return the correct model function with these fields
+	const testUser = {
+		email: 'testUser@hotmail.com',
+		username: 'Test123',
+		password: 'qwerty',
+	};
 	build()
 		.then(() => {
-			//add all the fields to create a new user
-			//return the correct model function with these fields
-			const testUser = {
-				email: 'testUser@hotmail.com',
-				username: 'Test123',
-				password: 'qwerty',
-			};
 			users.createUser(testUser);
 		})
 		.then(() => {
-			users.getUser('testUser@hotmail.com').then(returnedUser => {
+			users.getUser(testUser.email).then(returnedUser => {
 				t.equal(
 					returnedUser.username,
 					'Test123',
