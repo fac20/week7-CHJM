@@ -30,21 +30,24 @@ function getUserByID(id) {
 	return db
 		.query('SELECT * FROM users WHERE id = ($1)', [id])
 		.then(user => {
-			console.log("user rows", user.rows[0]);
 			return user.rows[0]
 		})
 		.catch(error => error);
 }
 
-function updatePassword(currentPassword, newPassword) {
-	bcrypt
-		.gensalt(10)
+function updatePassword(currentPassword, newPassword, userID) {
+	return bcrypt
+		.genSalt(10)
 		.then(salt => bcrypt.hash(newPassword, salt))
 		.then(newHash => {
 			return db.query(
-				`UPDATE users SET password = ($1) WHERE id = '${req.user.id}' RETURNING *`,
+				`UPDATE users SET password = ($1) WHERE id = '${userID}' RETURNING *`,
 				[newHash]
 			);
+		})
+		.then(result => {
+			console.log("rows:", result.rows[0])
+			return result.rows[0]
 		})
 		.catch(error => error);
 }

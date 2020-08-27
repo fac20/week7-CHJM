@@ -50,6 +50,20 @@ function login(req, res, next) {
 		.catch(next);
 }
 
+function changePassword(req, res, next) {
+	const username = req.body.username;
+	const oldpassword = req.body.oldpassword;
+	const newPassword = req.body.newPassword
+	users.updatePassword(oldpassword, newPassword, req.user.id)
+		.then(() => {
+			res.status(201).send({
+				message: 'password updated',
+			});
+		})
+		.catch(next);
+
+}
+
 //     ('jhart5', 'potatojosh@askjeeves.com', 'securePassw0rd'),
 // }
 
@@ -63,4 +77,5 @@ function login(req, res, next) {
 module.exports = {
 	signup,
 	login,
+	changePassword
 };

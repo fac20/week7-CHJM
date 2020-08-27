@@ -18,11 +18,9 @@ function authenticate(req, res, next) {
 		//runs so we dont need an if statement??
 		const token = authHeader.replace('Bearer', '');
 		const tokenData = jwt.verify(token, SECRET);
-		console.log("tokenData:", tokenData)
 		users
 			.getUserByID(tokenData.id)
 			.then(user => {
-				console.log("Authorise", user);
 				req.user = user;
 				next();
 			})
