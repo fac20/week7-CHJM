@@ -20,7 +20,7 @@ function authenticate(req, res, next) {
 		console.log(jwt.verify(token, SECRET));
 		const tokenData = jwt.verify(token, SECRET);
 		users
-			.getUser(tokenData.id)
+			.getUserbyID(tokenData.id)
 			.then(user => {
 				req.user = user;
 				next();
