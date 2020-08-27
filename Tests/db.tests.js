@@ -38,11 +38,11 @@ test('can add a user to the users table in database', t => {
 			users.createUser(testUser);
 		})
 		.then(() => {
-			users.getUser(testUser.email).then(returnedUser => {
+			users.getUser('testUser@hotmail.com').then(returnedUser => {
 				t.equal(
-					returnedUser.email,
-					'testUser@hotmail.com',
-					`Test user is in database with email ${returnedUser.email}`
+					returnedUser.username,
+					'Test123',
+					`Test user is in database with name ${returnedUser.username}`
 				);
 				t.end();
 			});
