@@ -1,5 +1,5 @@
-const pg = require('pg');
-const dotenv = require('dotenv');
+const pg = require('./node_modules/pg');
+const dotenv = require('./node_modules/dotenv');
 
 dotenv.config();
 

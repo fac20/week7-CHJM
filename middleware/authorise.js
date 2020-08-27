@@ -1,5 +1,5 @@
-const dotenv = require('dotenv');
-const jwt = require('jsonwebtoken');
+const dotenv = require('./node_modules/dotenv');
+const jwt = require('./node_modules/jsonwebtoken');
 const users = require('../model/users');
 const db = require('../database/connection');
 
