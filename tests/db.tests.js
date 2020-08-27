@@ -9,8 +9,8 @@ const { getMaxListeners } = require('../database/connection');
 test('can retrieve a user with a given email address', t => {
 	build()
 		.then(() => {
-			const email = 'potatojosh@askjeeves.com';
-			return users.getUser(email);
+			const username = 'jhart5';
+			return users.getUser(username);
 		})
 		.then(user => {
 			console.log(user);
@@ -42,7 +42,7 @@ test('can add a user to the users table in database', t => {
 			users.createUser(testUser);
 		})
 		.then(() => {
-			users.getUser(testUser.email).then(returnedUser => {
+			users.getUser(testUser.username).then(returnedUser => {
 				t.equal(
 					returnedUser.username,
 					'Test123',
