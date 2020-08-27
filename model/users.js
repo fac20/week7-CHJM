@@ -20,9 +20,9 @@ function createUser(user) {
 		});
 }
 
-function getUser(email) {
+function getUser(username) {
 	return db
-		.query('SELECT * FROM users WHERE email = ($1)', [email])
+		.query('SELECT * FROM users WHERE username = ($1)', [username])
 		.then(user => user.rows[0])
 		.catch(error => error);
 }

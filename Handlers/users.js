@@ -23,6 +23,32 @@ function signin(req, res, next) {
 		.catch(next);
 }
 
-//function login(req, res, next) {}
+function login(req, res, next) {
+	const username = req.body.username;
+	const password = req.body.password;
 
-module.exports = { signin };
+	users.getUser(username).then(user => {});
+}
+
+module.exports = {
+	signin,
+	login,
+};
+
+// function login(req, res, next) {
+// 	const email = req.body.email;
+// 	const password = req.body.password;
+// 	model
+// 	  .getUser(email)
+// 	  .then((user) => {
+// 		if (password !== user.password) {
+// 		  const error = new Error("Unauthorized");
+// 		  error.status = 401;
+// 		  next(error);
+// 		} else {
+// 		  const token = jwt.sign({ user: user.id }, SECRET, { expiresIn: "1h" });
+// 		  res.status(200).send({ access_token: token });
+// 		}
+// 	  })
+// 	  .catch(next);
+//   }

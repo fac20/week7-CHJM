@@ -23,4 +23,16 @@ function getHarvest(type) {
 		.catch(console.error);
 }
 
-module.exports = { createHarvest, getHarvest };
+
+function getAllHarvest() {
+	return db
+		.query('SELECT * FROM harvest')
+		.then(result => result.rows)
+		.catch(console.error);
+}
+
+module.exports = {
+	createHarvest,
+	getHarvest,
+	getAllHarvest
+};

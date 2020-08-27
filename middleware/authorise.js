@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 const users = require('../model/users');
+const db = require('../database/connection');
 
 dotenv.config();
 const SECRET = process.env.JWT_SECRET;
@@ -8,7 +9,7 @@ const SECRET = process.env.JWT_SECRET;
 function authenticate(req, res, next) {
 	const authHeader = req.headers.authorization;
 	if (!authHeader) {
-		const error = new Error('Unauthorised');
+		const error = new Error('Unauthorised!');
 		error.status = 400;
 		next(error);
 	}
@@ -19,13 +20,13 @@ function authenticate(req, res, next) {
 		console.log(jwt.verify(token, SECRET));
 		const tokenData = jwt.verify(token, SECRET);
 		users
-			.getUserByID(tokenData.user)
+			.getUserbyID(tokenData.id)
 			.then(user => {
 				req.user = user;
 				next();
 			})
 			.catch(next);
-	} catch (error) {
+	} catch (_) {
 		// replaced underscore with error
 		const error = new Error('Unauthorized');
 		error.status = 401;
