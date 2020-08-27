@@ -1,5 +1,5 @@
-const users = require('./model/users');
-const harvest = require('./model/harvest');
+const users = require('../model/users');
+const harvest = require('../model/harvest');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const SECRET = process.env.SECRET;

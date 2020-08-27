@@ -5,7 +5,6 @@ const users = require('../model/users');
 const { getMaxListeners } = require('../database/connection');
 
 // test that getUser works
-
 test('can retrieve a user with a given email address', t => {
 	build()
 		.then(() => {
