@@ -1,6 +1,6 @@
-const test = require('./node_modules/tape');
-const request = require('./node_modules/supertest');
-const nock = require('./node_modules/nock');
+const test = require('tape');
+const request = require('supertest');
+const nock = require('nock');
 const server = require('../server');
 
 test('server tests are initialised and working', t => {

@@ -6,7 +6,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 4000;
 //bring in handlers with format const nameOfHandlers = require('./handlers/file')
 const users = require('./handlers/users');
-const harvests = require('./handlers/harvests');
+const harvests = require('./handlers/harvest');
 
 //bring in middleware with format const nameOfMiddleware = require('./middleware/file')
 const handleErrors = require('./middleware/errorHandling');
