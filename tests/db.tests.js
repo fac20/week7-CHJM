@@ -2,6 +2,7 @@ const test = require('tape');
 const build = require('../database/build');
 const db = require('../database/connection');
 const users = require('../model/users');
+const { getMaxListeners } = require('../database/connection');
 
 // test that getUser works
 test('can retrieve a user with a given email address', t => {
@@ -54,27 +55,7 @@ test('can add a user to the users table in database', t => {
 		});
 });
 
-// test('can delete a harvest from database', t => {
-// 	//check how many harvest entries there are
-// 	build()
-// 		.then(() => {
-// 			const entriesBeforeDeletion = db.query(
-// 				'SELECT count(*) FROM harvest'
-// 			);
-// 			console.log(entriesBeforeDeletion);
-
-// 			harvest.deleteHarvest(1).then(() => {
-// 				const entriesNow = db.query('SELECT count(*) FROM harvest');
-// 				t.equal(
-// 					entriesNow,
-// 					entriesBeforeDeletion - 1,
-// 					`Before deletion entries were: ${entriesBeforeDeletion}, now`
-// 				);
-// 				t.end();
-// 			});
-// 		})
-// 		.catch(err => {
-// 			t.error(err);
-// 			t.end();
-// 		});
-// });
+// otherwise tests will pause for 10s in the terminal
+// test('Close DB pool (not a real test)', t => {
+// 	db.end();
+// 	t.end();

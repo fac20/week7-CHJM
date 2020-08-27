@@ -36,9 +36,19 @@ function deleteHarvest(id) {
 		.catch(err => err);
 }
 
+function adjustHarvest(id, property, newValue) {
+
+	return db.query(`UPDATE harvest SET ${property} = ($1) WHERE id = '${id}' RETURNING *`,
+			[newValue]
+		)
+		.then(rows => rows[0])
+		.catch(console.error)
+}
+
 module.exports = {
 	createHarvest,
 	getHarvest,
 	getAllHarvest,
 	deleteHarvest,
+	adjustHarvest
 };
