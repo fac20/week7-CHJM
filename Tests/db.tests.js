@@ -60,3 +60,9 @@ test('can add a user to the users table in database', t => {
 // test that getHarvest
 
 // test thta createHarvest
+
+// otherwise tests will pause for 10s in the terminal
+test('Close DB pool (not a real test)', t => {
+	db.end();
+	t.end();
+});
