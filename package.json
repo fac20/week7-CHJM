@@ -1,26 +1,26 @@
 {
-  "name": "week7-chjm",
-  "version": "1.0.0",
-  "description": "## Roles",
-  "main": "server.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fac20/week7-CHJM.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fac20/week7-CHJM/issues"
-  },
-  "homepage": "https://github.com/fac20/week7-CHJM#readme",
-  "devDependencies": {
-    "tape": "^5.0.1"
-  }
+	"name": "week7-chjm",
+	"version": "1.0.0",
+	"description": "## Roles",
+	"main": "server.js",
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"test": "NODE_ENV=test tape 'src/tests/*' | tap-spec",
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/fac20/week7-CHJM.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/fac20/week7-CHJM/issues"
+	},
+	"homepage": "https://github.com/fac20/week7-CHJM#readme",
+	"devDependencies": {
+		"tape": "^5.0.1"
+	}
 }
