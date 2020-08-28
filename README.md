@@ -49,6 +49,50 @@ We used:
 
 ## Examples of use
 
+1. To view all harvests [/harvest] - Mehtod:[GET],  Example: http://localhost:4000/harvest
+2. To select specific harvest [/harvest/type]- Mehtod:[GET], Example: http://localhost:4000/harvest/apple (does not show error if harvest is not found)
+3. To signup [/signup]- Mehtod:[POST], Example: http://localhost:4000/signup
+
+In the body fo your request add object following keys: "username", "email", "password"
+Example:
+```
+{
+	"username": "tom",
+	"email": "tom@gmail.com",
+	"password": "12345"
+}
+```
+
+**Important! After recieving token save it in your authorization header**
+
+
+4. To login [/login]- Mehtod:[POST], Example: http://localhost:4000/login
+
+In the body fo your request add object following keys: "username", "password"
+Example:
+```
+{
+	"username": "tom",
+	"password": "12345"
+}
+```
+**Important! After recieving token save it in your authorization header**
+
+5. To login [/harvest]- Mehtod:[POST], Example: http://localhost:4000/harvest
+
+**Important! If you did not save authorization token you will not be permited to create new post! Login or Signup First!**
+
+In the body fo your request add object following keys: "food_type", "taste", "harvest_time", "location", "date"
+Example:
+```
+{
+	"food_type": "mint",
+	"taste": "fresh",
+	"harvest_time": "winter",
+	"location": "ealing_broadway",
+	"date": "27th August 2020"
+}
+```
 
 
 ## Project status
