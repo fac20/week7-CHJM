@@ -17,10 +17,9 @@ function authenticate(req, res, next) {
 		// line 12 exits from function if the above error
 		//runs so we dont need an if statement??
 		const token = authHeader.replace('Bearer', '');
-		console.log(jwt.verify(token, SECRET));
 		const tokenData = jwt.verify(token, SECRET);
 		users
-			.getUserbyID(tokenData.id)
+			.getUserByID(tokenData.id)
 			.then(user => {
 				req.user = user;
 				next();

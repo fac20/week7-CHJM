@@ -1,5 +1,5 @@
 const users = require('../model/users');
-const harvest = require('../model/harvest');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const SECRET = process.env.JWT_SECRET;
@@ -9,7 +9,9 @@ function signup(req, res, next) {
 	users
 		.createUser(userData)
 		.then(user => {
-			const token = jwt.sign({ user: user.id }, SECRET, {
+			const token = jwt.sign({
+				id: user.id
+			}, SECRET, {
 				expiresIn: '1h',
 			});
 			const response = {
@@ -28,20 +30,38 @@ function login(req, res, next) {
 	const password = req.body.password;
 	users
 		.getUser(username)
-		.then(user => {
-			console.log(user);
-			if (password !== user.password) {
+		.then(async user => {
+			const match = await bcrypt.compare(password, user.password);
+			if (match) {
+				const token = jwt.sign({
+					user: user.id
+				}, SECRET, {
+					expiresIn: '2h'
+				});
+				res.status(200).send({
+					access_token: token
+				});
+			} else {
 				const error = new Error('wrong password');
 				error.status = 401;
 				next(error);
-			} else {
-				const token = jwt.sign({ user: user.id }, SECRET, {
-					expiresIn: '2h',
-				});
-				res.status(200).send({ access_token: token });
 			}
 		})
 		.catch(next);
+}
+
+function changePassword(req, res, next) {
+	const username = req.body.username;
+	const oldpassword = req.body.oldpassword;
+	const newPassword = req.body.newPassword
+	users.updatePassword(oldpassword, newPassword, req.user.id)
+		.then(() => {
+			res.status(201).send({
+				message: 'password updated',
+			});
+		})
+		.catch(next);
+
 }
 
 //     ('jhart5', 'potatojosh@askjeeves.com', 'securePassw0rd'),
@@ -57,4 +77,5 @@ function login(req, res, next) {
 module.exports = {
 	signup,
 	login,
+	changePassword
 };

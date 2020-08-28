@@ -2,7 +2,7 @@ const test = require('tape');
 const build = require('../database/build');
 const db = require('../database/connection');
 const users = require('../model/users');
-const { getMaxListeners } = require('../database/connection');
+const harvest = require('../model/harvest');
 
 // test that getUser works
 test('can retrieve a user with a given email address', t => {
@@ -45,6 +45,35 @@ test('can add a user to the users table in database', t => {
 						returnedUser.username,
 						'Test123',
 						`Test user is in database with name ${returnedUser.username}`
+					);
+					t.end();
+				});
+		})
+		.catch(err => {
+			t.error(err);
+			t.end();
+		});
+});
+
+// test that createUser
+test('can add a harvest to the harvest table in database', t => {
+	const testHarvest = {
+		"food_type": "mint",
+		"taste": "fresh",
+		"harvest_time": "winter",
+		"location": "ealing_broadway",
+		"date": "27th August 2020"
+	};
+	build()
+		.then(() => {
+			harvest
+				.createHarvest(testHarvest)
+
+				.then(returnedHarvest => {
+					t.equal(
+						returnedHarvest.taste,
+						'fresh',
+						`Test harvest is in database with taste of ${returnedHarvest.taste}`
 					);
 					t.end();
 				});
