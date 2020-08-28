@@ -46,7 +46,7 @@ function adjustHarvest(req, res, next) {
 	console.log(req.params);
 	const id = req.params.id;
 	const property = req.params.property;
-	const newValue = req.body;
+	const newValue = req.body.value;
 	console.log(req.body);
 	harvestModel
 		.adjustHarvest(id, property, newValue)

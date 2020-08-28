@@ -37,12 +37,14 @@ function deleteHarvest(id) {
 		.catch(err => err);
 }
 
+//attempts to fix vulnerable function which was using string interp to insert
 function adjustHarvest(id, property, newValue) {
 	return db
-		.query(
-			`UPDATE harvest SET ${property} = ($1) WHERE id = '${id}' RETURNING *`,
-			[newValue]
-		)
+		.query('UPDATE harvest SET ($1) = ($2) WHERE id = ($3) RETURNING *', [
+			property,
+			newValue,
+			id,
+		])
 		.then(rows => rows[0])
 		.catch(console.error);
 }
