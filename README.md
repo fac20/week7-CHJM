@@ -4,6 +4,7 @@
 * [Project aim](#The-projects-aim)
 * [Technologies](#Technologies)
 * [Setup](#setup)
+* [Examples of use](#Examples-of-use)
 * [Project Status](#Project-status)
 * [Authors](#Authors)
 * [Resources](#Resources)
@@ -46,7 +47,9 @@ We used:
 
 - For testing enter 'npm run test'
 
-## 
+## Examples of use
+
+
 
 ## Project status
 
