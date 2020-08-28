@@ -13,8 +13,8 @@ function createUser(user) {
 				[user.username, user.email, user.password]
 			);
 		})
-		.then(result => result.rows[0])
-		.catch(error => error);
+		.then(result => result.rows[0]);
+	//.catch(error => error);
 }
 
 function getUser(username) {
@@ -22,17 +22,15 @@ function getUser(username) {
 		.query('SELECT * FROM users WHERE username = ($1)', [username])
 		.then(user => {
 			return user.rows[0];
-		})
-		.catch(error => error);
+		});
+	//.catch(error => error);
 }
 
 function getUserByID(id) {
-	return db
-		.query('SELECT * FROM users WHERE id = ($1)', [id])
-		.then(user => {
-			return user.rows[0]
-		})
-		.catch(error => error);
+	return db.query('SELECT * FROM users WHERE id = ($1)', [id]).then(user => {
+		return user.rows[0];
+	});
+	//.catch(error => error);
 }
 
 function updatePassword(currentPassword, newPassword, userID) {
@@ -46,15 +44,15 @@ function updatePassword(currentPassword, newPassword, userID) {
 			);
 		})
 		.then(result => {
-			console.log("rows:", result.rows[0])
-			return result.rows[0]
-		})
-		.catch(error => error);
+			console.log('rows:', result.rows[0]);
+			return result.rows[0];
+		});
+	//.catch(error => error);
 }
 
 module.exports = {
 	createUser,
 	getUser,
 	updatePassword,
-	getUserByID
+	getUserByID,
 };

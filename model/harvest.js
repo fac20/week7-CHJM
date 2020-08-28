@@ -10,7 +10,7 @@ function createHarvest(harvest, user) {
 				harvest.harvest_time,
 				harvest.location,
 				harvest.date,
-				user
+				user,
 			]
 		)
 		.then(result => result.rows[0])
@@ -20,7 +20,7 @@ function createHarvest(harvest, user) {
 function getHarvest(type) {
 	return db
 		.query('SELECT * FROM harvest WHERE food_type = ($1)', [type])
-		.then(result => result.rows)
+		.then(result => result.rows[0])
 		.catch(console.error);
 }
 
@@ -38,12 +38,13 @@ function deleteHarvest(id) {
 }
 
 function adjustHarvest(id, property, newValue) {
-
-	return db.query(`UPDATE harvest SET ${property} = ($1) WHERE id = '${id}' RETURNING *`,
+	return db
+		.query(
+			`UPDATE harvest SET ${property} = ($1) WHERE id = '${id}' RETURNING *`,
 			[newValue]
 		)
 		.then(rows => rows[0])
-		.catch(console.error)
+		.catch(console.error);
 }
 
 module.exports = {
@@ -51,5 +52,5 @@ module.exports = {
 	getHarvest,
 	getAllHarvest,
 	deleteHarvest,
-	adjustHarvest
+	adjustHarvest,
 };

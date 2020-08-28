@@ -14,10 +14,8 @@ function getHarvest(req, res, next) {
 	harvestModel
 		.getHarvest(type)
 		.then(result => {
-			!result
-				?
-				res.status(204).send('No such a harvest. Change harvest type') :
-				res.status(200).send(result);
+			console.log(result);
+			!result ? res.status(204) : res.status(200).send(result); //204 code can't send a res body!
 		})
 		.catch(next);
 }
@@ -25,7 +23,7 @@ function getHarvest(req, res, next) {
 function createHarvest(req, res, next) {
 	const id = req.user.id;
 	const harvestData = req.body;
-	console.log("user id createHarvest Handler:", id);
+	console.log('user id createHarvest Handler:', id);
 	console.log(harvestData);
 	harvestModel
 		.createHarvest(harvestData, id)

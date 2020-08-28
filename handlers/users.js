@@ -60,10 +60,11 @@ function login(req, res, next) {
 
 function changePassword(req, res, next) {
 	const username = req.body.username;
-	const oldpassword = req.body.oldpassword;
+	const oldPassword = req.body.oldPassword;
 	const newPassword = req.body.newPassword;
+	console.log(req.user.id);
 	users
-		.updatePassword(oldpassword, newPassword, req.user.id)
+		.updatePassword(oldPassword, newPassword, req.user.id)
 		.then(() => {
 			res.status(201).send({
 				message: 'password updated',
@@ -71,16 +72,6 @@ function changePassword(req, res, next) {
 		})
 		.catch(next);
 }
-
-//     ('jhart5', 'potatojosh@askjeeves.com', 'securePassw0rd'),
-// }
-
-// function getUser(username) {
-// 	return db
-// 		.query('SELECT * FROM users WHERE username = ($1)', [username])
-// 		.then(user => user.rows[0])
-// 		.catch(error => error);
-// }
 
 module.exports = {
 	signup,
