@@ -7,6 +7,7 @@
 * [Examples of use](#Examples-of-use)
 * [Project Status](#Project-status)
 * [Authors](#Authors)
+* [Project Presentation](#Project-presentation)
 * [Resources](#Resources)
 
 
@@ -104,6 +105,10 @@ Example:
   FAC20 Group - week7-CHJM
 
 	Trish, Jennifer, Josh, Rihards
+	
+## Project Presentation
+
+https://hackmd.io/KALRsQsZSg-7lf9UZwIfnQ?both
 
 ### Resources
 
