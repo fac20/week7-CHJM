@@ -38,9 +38,15 @@ We used:
 ## Setup
 
 1. Clone the repo
-2. Run npm install in terminal
-3. Enter npm run dev 
-4. Run npm start (to start server on localhost:4000)
+2. Run 'npm install' in terminal
+3. Run 'psql' in terminal (for database setup)
+4. Setup user if you need (CREATE USER username SUPERUSER PASSWORD 'password';
+6. Connect to our heroku database \connect [url can be found in our slack FAC20 channel]
+5. Run 'npm start' (to start server on localhost:4000)
+
+- For testing enter 'npm run test'
+
+## 
 
 ## Project status
 
