@@ -1,7 +1,7 @@
 # URBAN HARVEST
 
 ## Table of contents
-* [General info](#The projects aim)
+* [General info](#The-projects-aim)
 * [Technologies](#Technologies)
 * [Setup](#setup)
 * [Authors](#Authors)
