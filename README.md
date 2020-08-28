@@ -1,9 +1,10 @@
 # URBAN HARVEST
 
 ## Table of contents
-* [General info](#The-projects-aim)
+* [Project aim](#The-projects-aim)
 * [Technologies](#Technologies)
 * [Setup](#setup)
+* [Project Status](#Project-status)
 * [Authors](#Authors)
 * [Resources](#Resources)
 
@@ -25,6 +26,25 @@ We used:
 - Miro (for crazy 8's) 
 - Git / Github (including CI)
 - Heroku (for deployment)
+- NodeJS / Express
+- PostgreSQL
+- Javascript
+
+## Installation
+ 
+ - NPM package manager (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+ - PSQL (https://www.postgresql.org/download/)
+
+## Setup
+
+1. Clone the repo
+2. Run npm install in terminal
+3. Enter npm run dev 
+4. Run npm start (to start server on localhost:4000)
+
+## Project status
+
+- Code reviewing and debuging
 
 ## Authors
   
