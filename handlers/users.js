@@ -65,6 +65,7 @@ function changePassword(req, res, next) {
 	console.log(oldPassword, newPassword);
 	users
 		.updatePassword(oldPassword, newPassword, req.user.id) //user id is requested from the authorise.js middleware
+
 		.then(() => {
 			res.status(201).send({
 				message: 'password updated',
@@ -72,16 +73,6 @@ function changePassword(req, res, next) {
 		})
 		.catch(next);
 }
-
-//     ('jhart5', 'potatojosh@askjeeves.com', 'securePassw0rd'),
-// }
-
-// function getUser(username) {
-// 	return db
-// 		.query('SELECT * FROM users WHERE username = ($1)', [username])
-// 		.then(user => user.rows[0])
-// 		.catch(error => error);
-// }
 
 module.exports = {
 	signup,
