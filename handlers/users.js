@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const SECRET = process.env.JWT_SECRET;
-
 function signup(req, res, next) {
 	const userData = req.body;
 	users
@@ -20,7 +19,7 @@ function signup(req, res, next) {
 			);
 			const response = {
 				id: user.id,
-				name: user.name,
+				name: user.username,
 				email: user.email,
 				access_token: token,
 			};
@@ -59,12 +58,14 @@ function login(req, res, next) {
 }
 
 function changePassword(req, res, next) {
-	const username = req.body.username;
+	//called at /users/password
+	//the api user needs to 'put' a json object with two things
 	const oldPassword = req.body.oldPassword;
 	const newPassword = req.body.newPassword;
-	console.log(req.user.id);
+	console.log(oldPassword, newPassword);
 	users
-		.updatePassword(oldPassword, newPassword, req.user.id)
+		.updatePassword(oldPassword, newPassword, req.user.id) //user id is requested from the authorise.js middleware
+
 		.then(() => {
 			res.status(201).send({
 				message: 'password updated',
