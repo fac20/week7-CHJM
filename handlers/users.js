@@ -9,11 +9,15 @@ function signup(req, res, next) {
 	users
 		.createUser(userData)
 		.then(user => {
-			const token = jwt.sign({
-				id: user.id
-			}, SECRET, {
-				expiresIn: '1h',
-			});
+			const token = jwt.sign(
+				{
+					id: user.id,
+				},
+				SECRET,
+				{
+					expiresIn: '1h',
+				}
+			);
 			const response = {
 				id: user.id,
 				name: user.name,
@@ -33,13 +37,17 @@ function login(req, res, next) {
 		.then(async user => {
 			const match = await bcrypt.compare(password, user.password);
 			if (match) {
-				const token = jwt.sign({
-					user: user.id
-				}, SECRET, {
-					expiresIn: '2h'
-				});
+				const token = jwt.sign(
+					{
+						user: user.id,
+					},
+					SECRET,
+					{
+						expiresIn: '2h',
+					}
+				);
 				res.status(200).send({
-					access_token: token
+					access_token: token,
 				});
 			} else {
 				const error = new Error('wrong password');
@@ -52,30 +60,21 @@ function login(req, res, next) {
 
 function changePassword(req, res, next) {
 	const username = req.body.username;
-	const oldpassword = req.body.oldpassword;
-	const newPassword = req.body.newPassword
-	users.updatePassword(oldpassword, newPassword, req.user.id)
+	const oldPassword = req.body.oldPassword;
+	const newPassword = req.body.newPassword;
+	console.log(req.user.id);
+	users
+		.updatePassword(oldPassword, newPassword, req.user.id)
 		.then(() => {
 			res.status(201).send({
 				message: 'password updated',
 			});
 		})
 		.catch(next);
-
 }
-
-//     ('jhart5', 'potatojosh@askjeeves.com', 'securePassw0rd'),
-// }
-
-// function getUser(username) {
-// 	return db
-// 		.query('SELECT * FROM users WHERE username = ($1)', [username])
-// 		.then(user => user.rows[0])
-// 		.catch(error => error);
-// }
 
 module.exports = {
 	signup,
 	login,
-	changePassword
+	changePassword,
 };

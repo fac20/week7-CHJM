@@ -30,7 +30,7 @@ function getUserByID(id) {
 	return db
 		.query('SELECT * FROM users WHERE id = ($1)', [id])
 		.then(user => {
-			return user.rows[0]
+			return user.rows[0];
 		})
 		.catch(error => error);
 }
@@ -46,8 +46,8 @@ function updatePassword(currentPassword, newPassword, userID) {
 			);
 		})
 		.then(result => {
-			console.log("rows:", result.rows[0])
-			return result.rows[0]
+			console.log('rows:', result.rows[0]);
+			return result.rows[0];
 		})
 		.catch(error => error);
 }
@@ -56,5 +56,5 @@ module.exports = {
 	createUser,
 	getUser,
 	updatePassword,
-	getUserByID
+	getUserByID,
 };

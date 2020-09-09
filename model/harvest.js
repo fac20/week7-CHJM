@@ -10,7 +10,7 @@ function createHarvest(harvest, user) {
 				harvest.harvest_time,
 				harvest.location,
 				harvest.date,
-				user
+				user,
 			]
 		)
 		.then(result => result.rows[0])
@@ -20,7 +20,7 @@ function createHarvest(harvest, user) {
 function getHarvest(type) {
 	return db
 		.query('SELECT * FROM harvest WHERE food_type = ($1)', [type])
-		.then(result => result.rows)
+		.then(result => result.rows[0])
 		.catch(console.error);
 }
 
@@ -37,13 +37,16 @@ function deleteHarvest(id) {
 		.catch(err => err);
 }
 
+//attempts to fix vulnerable function which was using string interp to insert
 function adjustHarvest(id, property, newValue) {
-
-	return db.query(`UPDATE harvest SET ${property} = ($1) WHERE id = '${id}' RETURNING *`,
-			[newValue]
-		)
+	return db
+		.query('UPDATE harvest SET ($1) = ($2) WHERE id = ($3) RETURNING *', [
+			property,
+			newValue,
+			id,
+		])
 		.then(rows => rows[0])
-		.catch(console.error)
+		.catch(console.error);
 }
 
 module.exports = {
@@ -51,5 +54,5 @@ module.exports = {
 	getHarvest,
 	getAllHarvest,
 	deleteHarvest,
-	adjustHarvest
+	adjustHarvest,
 };
