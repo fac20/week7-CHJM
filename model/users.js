@@ -21,6 +21,7 @@ function getUser(username) {
 	return db
 		.query('SELECT * FROM users WHERE username = ($1)', [username])
 		.then(user => {
+			//console.log("get user log:", user.rows[0]);
 			return user.rows[0];
 		})
 		.catch(error => error);

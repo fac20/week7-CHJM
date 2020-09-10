@@ -33,8 +33,8 @@ function login(req, res, next) {
 	const password = req.body.password;
 	users
 		.getUser(username)
-		.then(async user => {
-			const match = await bcrypt.compare(password, user.password);
+		.then(user => {
+			const match = bcrypt.compareSync(password, user.password);
 			if (match) {
 				const token = jwt.sign(
 					{
