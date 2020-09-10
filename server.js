@@ -16,7 +16,7 @@ const server = express();
 server.use(express.json());
 
 const corsOptions = {
-	origin: '*',
+	origin: "urbanharvest-chjm-wk9.netlify.app",
 	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
