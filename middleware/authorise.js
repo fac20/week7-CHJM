@@ -19,9 +19,11 @@ function authenticate(req, res, next) {
 
 		const token = authHeader.replace('Bearer ', ''); //fixed
 		const tokenData = jwt.verify(token, SECRET);
+		console.log(tokenData)
 		users
-			.getUserByID(tokenData.id) //fixed already
+			.getUserByID(tokenData.user) //fixed already
 			.then(user => {
+				console.log(user)
 				req.user = user;
 				next();
 			})
