@@ -1,6 +1,7 @@
 const express = require('express');
 const authentification = require('./middleware/authorise');
 const harvestHandler = require('./handlers/harvest');
+const cors = require("cors");
 
 // const db = require('./database/connection');
 require('dotenv').config();
@@ -13,6 +14,13 @@ const handleErrors = require('./middleware/errorHandling');
 
 const server = express();
 server.use(express.json());
+
+const corsOptions = {
+	origin: '*',
+	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+server.use(cors());
 
 server.use(handleErrors);
 
